@@ -1,0 +1,334 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+  --foreground-rgb: 68, 68, 68;
+  --background-rgb: 238, 238, 238;
+  --accent: #037971;
+  --accent-dark: #023436;
+  --accent-light: #049A8F;
+  --bg: #eeeeee;
+  --bg-card: #e2e2e2;
+  --bg-warm: #e8e6e2;
+  --border-color: #d0d0d0;
+  --text: #444444;
+  --text-light: #888888;
+  --text-muted: #aaaaaa;
+  --background: 0 0% 93%;
+  --foreground: 0 0% 27%;
+  --card: 0 0% 89%;
+  --card-foreground: 0 0% 27%;
+  --popover: 0 0% 93%;
+  --popover-foreground: 0 0% 27%;
+  --primary: 174 97% 24%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 0 0% 85%;
+  --secondary-foreground: 0 0% 27%;
+  --muted: 0 0% 85%;
+  --muted-foreground: 0 0% 45%;
+  --accent: 174 97% 24%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 0 0% 82%;
+  --input: 0 0% 82%;
+  --ring: 174 97% 24%;
+  --radius: 0px;
+}
+
+/* ── Animations ── */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(3, 121, 113, 0.08);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(3, 121, 113, 0.2);
+  }
+}
+
+@keyframes flow-right {
+  0% { transform: translateX(-100%); opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translateX(200%); opacity: 0; }
+}
+
+@keyframes dash {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes grid-line {
+  from { opacity: 0; transform: scaleX(0); }
+  to { opacity: 0.1; transform: scaleX(1); }
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes molecule-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes electrolyte-flow {
+  0% { offset-distance: 0%; }
+  100% { offset-distance: 100%; }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.8s ease-out forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-molecule-rotate {
+  animation: molecule-rotate 20s linear infinite;
+}
+
+/* Staggered delays */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+.delay-600 { animation-delay: 600ms; }
+.delay-700 { animation-delay: 700ms; }
+.delay-800 { animation-delay: 800ms; }
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ── Monospace label style ── */
+.mono-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #037971;
+}
+
+/* ── Separator ── */
+.separator {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #d0d0d0, transparent);
+}
+
+/* ── Table styles ── */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.8rem;
+}
+
+.data-table th {
+  text-align: left;
+  padding: 12px 16px;
+  border-bottom: 2px solid #037971;
+  color: #037971;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+}
+
+.data-table td {
+  padding: 10px 16px;
+  border-bottom: 1px solid #d0d0d0;
+  color: #888;
+}
+
+.data-table tr:hover td {
+  background: rgba(3, 121, 113, 0.04);
+  color: #444;
+}
+
+.data-table .highlight {
+  color: #037971;
+  font-weight: 700;
+}
+
+.data-table .danger {
+  color: #c53030;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #eeeeee;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #037971;
+}
+
+/* ── Selection ── */
+::selection {
+  background: rgba(3, 121, 113, 0.2);
+  color: #023436;
+}
+
+/* ── Quaise-style vertical grid overlay ── */
+.grid-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.grid-overlay-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 0 40px;
+}
+
+.grid-col {
+  border-left: 1px solid rgba(0, 0, 0, 0.06);
+  border-right: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+@media (max-width: 768px) {
+  .grid-overlay { display: none; }
+}
+
+/* ── Size selector tabs ── */
+.size-tab {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.8rem;
+  padding: 8px 16px;
+  border: 1px solid #d0d0d0;
+  background: #eeeeee;
+  color: #888;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.size-tab:hover {
+  border-color: #037971;
+  color: #037971;
+}
+
+.size-tab.active {
+  background: #037971;
+  border-color: #037971;
+  color: white;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    color: rgb(var(--foreground-rgb));
+    background: rgb(var(--background-rgb));
+    font-family: 'Inter', -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
